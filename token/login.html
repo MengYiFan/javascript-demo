@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-sacle=1, maximun-scale=1">
+  <title>TOKEN</title>
+  <style type="text/css">
+    html, body, form, input {
+      padding: 0;
+      margin: 0;
+    }
+
+    html, body {
+      font-family: '微软雅黑';
+    }
+
+    form {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300px;
+      height: 200px;
+      margin-top: -100px;
+      margin-left: -150px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 6px;
+      margin: 20px 0;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      box-sizing: border-box;
+      outline: none;
+      display: block;
+      transition: all .8s;
+    }
+
+    input:focus {
+      border-bottom-color: #0f88eb;
+    }
+
+    input, button {
+      font-size: 16px;
+      color: #4A4A4A;
+    }
+
+    .submit {
+      width: 100%;
+      padding: 8px 6px;
+      border-radius: 2px;
+      border: none;
+      background-color: #0f88eb;
+      color: #fff;
+      cursor: pointer;
+      transition: all .3s;
+    }
+
+    .submit:hover {
+      opacity: .9;
+    }
+  </style>
+</head>
+<body>
+  <form action="/login" method="post">
+    <input type="text" name="account" placeholder="账户">
+    <input type="password" name="password" placeholder="密码">
+    <button class="submit">提交</button>
+  </form>
+</body>
+</html>
