@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />  
+    <title>WebSocket Test</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />  
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 20px;
+      }
+
+      #message {
+        color: #444;
+      }
+
+      #message span {
+        color: blue;
+        opacity: .85;
+      }
+
+      #message i {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>WebSocket Test</h2>  
+    <div id="message"></div>
+    <button id="send">发送信息</button>
+    <button id="close">关闭连接</button>
+  </body>
+  <script language="javascript"type="text/javascript">  
+    ;(function () {
+      if (window.WebSocket) {
+        console.log('支持, 开始搞事情~');
+        var wsUri = 'ws://127.0.0.1:2888/', send, close, connectStatus = false,
+            message = document.getElementById('message'), websocket;
+
+        websocket = new WebSocket(wsUri);
+
+        websocket.onopen = function(evt) {
+          handleOpen(evt);
+        }
+        websocket.onclose = function(evt) {
+          handleClose(evt);
+        }
+        websocket.onmessage  = function(evt) {
+          handleMessage(evt);
+        }
+        websocket.onerror = function(evt) {
+          handleError(evt);
+        }
+
+
+        send = document.getElementById('send');
+        close = document.getElementById('close');
+
+        send.addEventListener('click', function () {
+          sendMessage('我来发送数据了, by WebSocket Test');
+        });
+
+        close.addEventListener('click', function () {
+          closeWss();
+        });
+      } else {
+        console.log('The browser don\'t supports websocket!');
+        alert('浏览器好像不认识wss~')
+      }
+
+      function handleOpen() {
+        wssLog("连接成功!");
+        sendMessage('来至 WebSocket Test的问候.');
+        connectStatus = true;
+      }
+
+      function handleClose(evt) {
+        wssLog('关闭了哦!');
+      }
+
+      function handleMessage(evt) {
+        wssLog('<span>接受的数据: ' + evt.data + '</span>');
+        // websocket.close(); 
+      }
+
+      function handleError(evt) {
+        wssLog('<i>' + evt.data + '</i>');
+      }
+
+      function closeWss() {
+        if (connectStatus) {
+          sendMessage('close');
+          websocket.close();
+          connectStatus = false;
+        }
+        
+      }
+
+      function sendMessage(msg) {
+        wssLog('发送的数据: ' + msg);
+        websocket.send(msg);
+      }
+
+      function wssLog(msg) {
+        var p = document.createElement('p');
+        p.innerHTML = msg;
+        message.appendChild(p);
+        console.log(msg)
+      }
+    })()  
+  </script>  
+</html>

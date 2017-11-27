@@ -17,9 +17,14 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "fs": "^0.0.1-security",
+    "http-server": "^0.10.0",
+    "https": "^1.0.0",
     "jsonwebtoken": "^8.1.0",
+    "node-websocket-server": "^1.1.4",
     "nodemon": "^1.12.1",
     "path": "^0.12.7",
-    "session": "^0.1.0"
+    "pm2": "^2.8.0",
+    "session": "^0.1.0",
+    "ws": "^3.3.2"
   }
 }
