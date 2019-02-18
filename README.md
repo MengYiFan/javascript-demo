@@ -9,6 +9,7 @@
 1. 实现数字验证码：verificationCode
 2. 身份信息验证：token
 3. WebSocket实现: ws、wss
+4. 访问限流: throttle
 
 陆续会更多...
 
